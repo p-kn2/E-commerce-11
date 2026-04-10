@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        GIT_REPO_NAME = "Microservices-E-Commerce-eks-project"
+        GIT_REPO_NAME = "E-commerce-11"
         GIT_EMAIL = "piyush.dev0325@gmail.com"
         GIT_USER_NAME = "p-kn2"
         IMAGE_NAME = "adservice"
@@ -39,9 +39,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 242201296943.dkr.ecr.us-east-1.amazonaws.com
-                    docker tag adservice:latest 242201296943.dkr.ecr.us-east-1.amazonaws.com/adservice:${BUILD_NUMBER}
-                    docker push 242201296943.dkr.ecr.us-east-1.amazonaws.com/adservice:${BUILD_NUMBER}
+                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 276971052169.dkr.ecr.us-east-1.amazonaws.com
+                    docker tag adservice:latest 276971052169.dkr.ecr.us-east-1.amazonaws.com/adservice:${BUILD_NUMBER}
+                    docker push 276971052169.dkr.ecr.us-east-1.amazonaws.com/adservice:${BUILD_NUMBER}
                     '''
                 }
             }
