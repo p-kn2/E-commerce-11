@@ -113,9 +113,12 @@ resource "aws_iam_instance_profile" "worker" {
 # VPC and Subnet Data Sources
 # ----------------------------
 data "aws_vpc" "main" {
+  # If multiple VPCs still match, replace the tags block below with:
+  # id = "vpc-xxxxxxxxxx"   ← paste your specific VPC ID here
   tags = {
     Name = "Jumphost-vpc"
   }
+  state = "available"
 }
 
 data "aws_subnet" "subnet-1" {
