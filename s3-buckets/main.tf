@@ -1,12 +1,12 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"
 }
 
 resource "aws_s3_bucket" "bucket1" {
-  bucket = "aluruarumullaa1"
+  bucket = "teju5088-usw2"
 
   tags = {
-    Name        = "aluruarumullaa1"
+    Name        = "teju5088-usw2"
     Environment = "dev"
   }
 }
@@ -19,16 +19,32 @@ resource "aws_s3_bucket_versioning" "bucket1_versioning" {
 }
 
 resource "aws_s3_bucket" "bucket2" {
-  bucket = "arumullaaluruu1"
+  bucket = "teju5089-usw2"
 
   tags = {
-    Name        = "arumullaaluruu1"
+    Name        = "teju5089-usw2"
     Environment = "dev"
   }
 }
 
 resource "aws_s3_bucket_versioning" "bucket2_versioning" {
   bucket = aws_s3_bucket.bucket2.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket" "bucket3" {
+  bucket = "teju5090-usw2"
+
+  tags = {
+    Name        = "teju5090-usw2"
+    Environment = "dev"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "bucket3_versioning" {
+  bucket = aws_s3_bucket.bucket3.id
   versioning_configuration {
     status = "Enabled"
   }

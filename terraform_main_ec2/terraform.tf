@@ -7,13 +7,13 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "teju5088"
+    bucket = "teju5088-usw2"
     key    = "ec2/terraform.tfstate"
-    region = "us-east-1"
+    region = "us-west-2"
   }
 
   required_version = ">= 1.6.3"
 }
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"
 }

@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "teju5090"
+    bucket = "teju5090-usw2"
     key    = "ecr/terraform.tfstate"
-    region = "us-east-1"
+    region = "us-west-2"
   }
 
   required_version = ">= 1.6.3"
