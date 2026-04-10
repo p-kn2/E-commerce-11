@@ -116,7 +116,7 @@ data "aws_vpc" "main" {
   # If multiple VPCs still match, replace the tags block below with:
   # id = "vpc-xxxxxxxxxx"   ← paste your specific VPC ID here
   tags = {
-    Name = "Jumphost-vpc"
+    Name = "Jumphost-vpc-pk1"
   }
   state = "available"
 }
@@ -125,7 +125,7 @@ data "aws_subnet" "subnet-1" {
   vpc_id = data.aws_vpc.main.id
   filter {
     name   = "tag:Name"
-    values = ["Public-Subnet-1"]
+    values = ["Public-Subnet-1-pk1"]
   }
 }
 
@@ -133,7 +133,7 @@ data "aws_subnet" "subnet-2" {
   vpc_id = data.aws_vpc.main.id
   filter {
     name   = "tag:Name"
-    values = ["Public-subnet2"]
+    values = ["Public-subnet2-pk1"]
   }
 }
 
@@ -141,7 +141,7 @@ data "aws_security_group" "selected" {
   vpc_id = data.aws_vpc.main.id
   filter {
     name   = "tag:Name"
-    values = ["Jumphost-sg"]
+    values = ["Jumphost-sg-pk1"]
   }
 }
 
