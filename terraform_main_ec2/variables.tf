@@ -84,4 +84,11 @@ variable "instance_name" {
   type        = string
   default     = "Jumphost-server-pk1"
 }
-#
+
+variable "my_ip" {
+  description = "Your public IP address to restrict Jenkins (port 8080) access"
+  type        = string
+  # Get your IP: curl -s https://checkip.amazonaws.com
+  # Set via: terraform apply -var="my_ip=YOUR_IP"
+  # Or add to terraform.tfvars: my_ip = "YOUR_IP"
+}

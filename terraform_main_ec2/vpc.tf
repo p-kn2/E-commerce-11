@@ -1,7 +1,7 @@
 
 resource "aws_vpc" "vpc" {
-  cidr_block = "10.0.0.0/16"
-  enable_dns_support = true
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = {
@@ -106,7 +106,7 @@ resource "aws_security_group" "security-group" {
   description = "Allowing Jenkins, Sonarqube, SSH Access"
 
   ingress = [
-    for port in [22, 443, 8080, 9000, 9090, 3306, 80] : {
+    for port in [22, 443, 9000, 9090, 3306, 80] : {
       description      = "TLS from VPC"
       from_port        = port
       to_port          = port
@@ -118,6 +118,15 @@ resource "aws_security_group" "security-group" {
       cidr_blocks      = ["0.0.0.0/0"]
     }
   ]
+
+  # Port 8080 (Jenkins) — restricted to your IP only
+  ingress {
+    description = "Jenkins access - my IP only"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["${var.my_ip}/32"]
+  }
 
   egress {
     from_port   = 0
